@@ -3,3 +3,12 @@ apply plugin: 'java'
 apply plugin: 'application'
 
 mainClassName = "Program"
+
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testCompile 'org.testng:testng:6.10'
+}
