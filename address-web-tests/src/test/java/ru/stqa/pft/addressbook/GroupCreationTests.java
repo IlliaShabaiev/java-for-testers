@@ -1,20 +1,15 @@
 package ru.stqa.pft.addressbook;
 
-import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
-import static org.testng.Assert.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
-
 public class GroupCreationTests {
   private WebDriver wb;
 
   @BeforeMethod(alwaysRun = true)
-  public void setUp() throws Exception {
+  public void setUp() {
     wb = new ChromeDriver();
     wb.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wb.get("http://localhost/addressbook/");
@@ -27,7 +22,7 @@ public class GroupCreationTests {
   }
 
   @Test
-  public void testGroupCreation() throws Exception {
+  public void testGroupCreation() {
 
     wb.findElement(By.linkText("groups")).click();
     wb.findElement(By.name("new")).click();
@@ -47,7 +42,7 @@ public class GroupCreationTests {
   }
 
   @AfterMethod(alwaysRun = true)
-  public void tearDown() throws Exception {
+  public void tearDown() {
     wb.quit();
     }
 
@@ -69,5 +64,4 @@ public class GroupCreationTests {
       return false;
     }
   }
-
 }
