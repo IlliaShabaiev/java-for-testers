@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 public class ContactHelper extends HelperBase {
 
-  public ContactHelper(WebDriver wd) {
-    super(wd);
+  public ContactHelper(WebDriver wd, WebDriverWait wait) {
+    super(wd, wait);
   }
 
   public void clickOnAddNewContactPage() {

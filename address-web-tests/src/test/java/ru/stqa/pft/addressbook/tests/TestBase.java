@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod    ;
 import ru.stqa.pft.addressbook.model.NewContactData;
@@ -13,6 +14,7 @@ public class TestBase {
 
   protected final ApplicationManager app = new ApplicationManager();
   protected WebDriver wd;
+  protected WebDriverWait wait;
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() {
