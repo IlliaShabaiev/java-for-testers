@@ -9,6 +9,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="address-web-tests_main" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-java:3.141.59" level="project" />
     <orderEntry type="library" name="Gradle: org.testng:testng:6.10" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-chrome-driver:3.141.59" level="project" />

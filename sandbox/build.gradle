@@ -9,6 +9,9 @@ repositories {
     jcenter()
 }
 
-dependencies {
-    testCompile 'org.testng:testng:6.10'
-}
+
+    dependencies {
+        compile("org.seleniumhq.selenium:selenium-java:3.141.59")
+        testCompile 'org.testng:testng:6.10'
+    }
+
