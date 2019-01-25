@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 
 public class PointTests {
 
-  @Test
   public void validateThatDistanceIsEqualToBigNumber() {
     Point p1 = new Point(11, 12);
     Point p2 = new Point(12, 13);
@@ -15,7 +14,6 @@ public class PointTests {
     Assert.assertEquals(currentDistance, expectedDistance);
     }
 
-  @Test
   public void validateThatDistanceIsEqualToZero() {
     Point p1 = new Point(11, 12);
     Point p2 = new Point(11, 12);
@@ -25,7 +23,6 @@ public class PointTests {
     Assert.assertEquals(expectedDistance, actualDistance);
   }
 
-  @Test
   public void validateThatDistanceIsCorrectForNumbersWithDecimalPoints() {
     Point p1 = new Point(11.234723, 12.123812);
     Point p2 = new Point(14.231, 7.16234);
@@ -35,7 +32,6 @@ public class PointTests {
     Assert.assertEquals(expectedDistance, actualDistance);
   }
 
-  @Test
   public void validateThatDistanceIsPreciseToOneHundredth() {
     Point p1 = new Point(11, 11);
     Point p2 = new Point(11, 11.01);
