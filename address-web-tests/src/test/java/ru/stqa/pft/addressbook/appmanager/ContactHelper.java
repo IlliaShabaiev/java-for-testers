@@ -44,6 +44,22 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//*[@id='maintable']/tbody/tr[2]/td[1]"));
   }
 
+  public String getMessageBoxContent(){
+      String value = null;
+      try{
+        value = getValueOfAttributeByXpath("//*[@id=\"content\"]//*[@class=\"msgbox\"]");
+      }catch (Exception e){
+        System.out.println("Couldn't find Message Box");
+        e.printStackTrace();
+      }
+    return value;
+  }
+
+  public boolean isMessageBoxPresent(){
+    String msgBoxXpath = "//*[@id=\"content\"]//*[@class=\"msgbox\"]";
+    return isElementPresent(msgBoxXpath);
+  }
+
   public Map<String, String> getAdditionaltDetailsofContactBeingDeleted(){
     Map<String, String> additionalDetails = new HashMap<>();
     String detailsUrl = getValueOfAttributeByXpath("//*[@id='maintable']/tbody/tr[2]/td[7]/a", "href");

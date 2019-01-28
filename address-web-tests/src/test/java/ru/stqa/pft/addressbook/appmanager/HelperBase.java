@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -73,6 +74,17 @@ public class HelperBase {
       ex.printStackTrace();
     }
     return value;
+  }
+
+  public boolean isElementPresent(String xpath){
+    boolean present = false;
+    try{
+      wd.findElement(By.xpath(xpath));
+      present = true;
+    }catch (Exception ex){
+      System.out.println("Element located at xpath: " + xpath + " is not present");
+    }
+    return present;
   }
 
   public void sleep(int ms){

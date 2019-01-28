@@ -17,7 +17,8 @@ public class NewContactDeletionTests extends TestBase {
     app.getContactHelper().alertText();
     app.getContactHelper().waitUntilUrContains("delete.php?part=" + detailsOfContactBeingDeleted.get("id"));
     app.getContactHelper().waitUntilTitleContains("Delete");
-    String actualContentDeletedSucessfullyMessage = app.getContactHelper().getValueOfAttributeByXpath("//*[@id=\"content\"]//*[@class=\"msgbox\"]");
+    Assert.assertEquals(app.getContactHelper().isMessageBoxPresent(), true);
+    String actualContentDeletedSucessfullyMessage = app.getContactHelper().getMessageBoxContent();
     Assert.assertEquals(actualContentDeletedSucessfullyMessage, "Record successful deleted");
   }
 }
