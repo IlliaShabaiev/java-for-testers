@@ -2,12 +2,14 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.stqa.pft.addressbook.model.GroupData;
+
 
 public class GroupHelper extends HelperBase {
 
-  public GroupHelper(WebDriver wd) {
-    super(wd);
+  public GroupHelper(WebDriver wd, WebDriverWait wait) {
+    super(wd, wait);
   }
 
   public void returnToGroupPage() {
@@ -17,6 +19,7 @@ public class GroupHelper extends HelperBase {
   public void submitGroupCreation() {
     click(By.name("submit"));
   }
+
 
   public void fillGroupForm(GroupData groupData) {
     type(By.name("group_name"), groupData.getName());

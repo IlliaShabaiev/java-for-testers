@@ -2,31 +2,36 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
 
-  WebDriver wd;
+
+  private WebDriver wd;
+  private WebDriverWait wait;
 
   private ContactHelper contactHelper;
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
+  private DataHelper dataHelper;
 
   public void init() {
    wd = new ChromeDriver();
+   wait = new WebDriverWait(wd,30);
    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
    wd.get("http://localhost/addressbook/");
-   groupHelper = new GroupHelper(wd);
-   navigationHelper = new NavigationHelper(wd);
-   sessionHelper = new SessionHelper(wd);
-   contactHelper = new ContactHelper(wd);
+   groupHelper = new GroupHelper(wd, wait);
+   navigationHelper = new NavigationHelper(wd, wait);
+   sessionHelper = new SessionHelper(wd, wait);
+   contactHelper = new ContactHelper(wd, wait);
+   dataHelper = new DataHelper();
 
   sessionHelper.login("admin", "secret");
   }
-
-
 
   public void stop() {
     wd.quit();
@@ -42,6 +47,10 @@ public class ApplicationManager {
 
   public ContactHelper getContactHelper() {
     return contactHelper;
+  }
+
+  public DataHelper getDataHelper() {
+    return dataHelper;
   }
 
   public SessionHelper getSessionHelper() {

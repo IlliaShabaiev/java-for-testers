@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     compile("org.seleniumhq.selenium:selenium-java:3.141.59")
+    compile group: 'com.github.javafaker', name: 'javafaker', version: '0.2'
     testCompile 'org.testng:testng:6.10'
 }
 
