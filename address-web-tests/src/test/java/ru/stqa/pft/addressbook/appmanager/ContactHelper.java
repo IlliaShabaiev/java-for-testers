@@ -94,8 +94,8 @@ public class ContactHelper extends HelperBase {
     return value;
   }
 
-  public boolean isMessageBoxPresent(){
-     String msgBoxXpath = "//*[@id=\"content\"]//*[@class=\"msgbox\"]";
-    return isElementPresent(msgBoxXpath);
+  public void isMessageBoxPresent(){
+     click(By.xpath("//*[@id=\"content\"]//*[@class=\"msgbox\"]"));
+
   }
 }

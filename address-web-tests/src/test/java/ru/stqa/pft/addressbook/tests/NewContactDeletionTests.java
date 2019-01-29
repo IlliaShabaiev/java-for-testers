@@ -9,40 +9,21 @@ import java.util.Map;
 
 
 public class NewContactDeletionTests extends TestBase {
-  @Test
-  public void NewContactDeletion() {
+    @Test
+    public void NewContactDeletion() {
+        NewContactData contactData = new NewContactData("Bob", "Johnson", "Sidley", "1111  Brooklyn", "123456789", "999 999 999", "ilyashabaev2209@gmail.com");
 
-      Faker faker = new Faker();
-      String firstName = faker.firstName();
-      String lastName = faker.lastName();
-      String email = firstName + "." + lastName + "@testgmail.com";
-      String company = app.getDataHelper().getCompanies().get(
-              app.getDataHelper().getRandomInteger(
-                      0, app.getDataHelper().getCompanies().size() - 1));
-      NewContactData contactData = new NewContactData(
-              firstName,
-              lastName,
-              company,
-              faker.streetAddress(true),
-              faker.phoneNumber(),
-              faker.phoneNumber(),
-              email
-      );
+        app.getContactHelper().returnToHomePage();
+        app.getContactHelper().clickOnAddNewContactPage();
+        app.getContactHelper().fillOutColntactForm(contactData);
+        app.getContactHelper().submit();
+        app.getContactHelper().returnToHomePage();
+        app.getContactHelper().selectContact();
+        app.getContactHelper().initNewContactDeletion();
+        app.getContactHelper().alertText();
+        app.getContactHelper().isMessageBoxPresent();
 
-      app.getContactHelper().returnToHomePage();
-      app.getContactHelper().clickOnAddNewContactPage();
-      app.getContactHelper().fillOutColntactForm(contactData);
-      app.getContactHelper().submit();
-      app.getContactHelper().returnToHomePage();
-      app.getContactHelper().selectContact();
-      Map<String, String> detailsOfContactBeingDeleted = app.getContactHelper().getAdditionaltDetailsofContactBeingDeleted();
-      app.getContactHelper().initNewContactDeletion();
-      app.getContactHelper().alertText();
-      app.getContactHelper().waitUntilUrContains("delete.php?part=" + detailsOfContactBeingDeleted.get("id"));
-      app.getContactHelper().waitUntilTitleContains("Delete");
-      Assert.assertEquals(app.getContactHelper().isMessageBoxPresent(), true);
-      String actualContentDeletedSucessfullyMessage = app.getContactHelper().getMessageBoxContent();
-      Assert.assertEquals(actualContentDeletedSucessfullyMessage, "Record successful deleted");
 
     }
-  }
+}
+

@@ -77,16 +77,7 @@ public class HelperBase {
     return value;
   }
 
-      public boolean isElementPresent(String xpath){
-      boolean present = false;
-      try{
-        wd.findElement(By.xpath(xpath));
-        present = true;
-      }catch (Exception ex){
-        System.out.println("Element located at xpath: " + xpath + " is not present");
-      }
-      return present;
-      }
+
 
   public void sleep(int ms) {
     try {
