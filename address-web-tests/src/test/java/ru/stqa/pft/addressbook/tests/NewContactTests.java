@@ -9,9 +9,9 @@ public class NewContactTests extends TestBase {
 
 
   @Test
-  public void testNewContact()  {
+  public void testNewContact() {
 
-    for (int i = 0; i<10; i++){
+   /* for (int i = 0; i<10; i++){
       Faker faker = new Faker();
       String firstName = faker.firstName();
       String lastName = faker.lastName();
@@ -28,14 +28,14 @@ public class NewContactTests extends TestBase {
               faker.phoneNumber(),
               faker.phoneNumber(),
               email
-      );
+      );*/
 
-      app.getContactHelper().clickOnAddNewContactPage();
-      app.getContactHelper().fillOutColntactForm(contactData);
-      app.getContactHelper().submit();
+    app.getContactHelper().clickOnAddNewContactPage();
+    app.getContactHelper().fillOutContactForm(new NewContactData("Ilya", "Shabaev", "test1"), true);
+    app.getContactHelper().submit();
 
-    }
-
+  }
+}
     //    NewContactData contactData = new NewContactData(
 //            "Ilya",
 //            "Shabaev",
@@ -44,7 +44,7 @@ public class NewContactTests extends TestBase {
 //            "123456789",
 //            "8728003751",
 //            "ilyashabaev2209@gmail.com");
-  }
 
 
-}
+
+

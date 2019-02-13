@@ -1,33 +1,46 @@
 package ru.stqa.pft.addressbook.model;
 
-public class NewContactData {
-  private final String firstName;
-  private final String lastName;
-  private final String company;
-  private final String address;
-  private final String homeNumber;
-  private final String mobileNumber;
-  private final String email;
+import java.security.acl.Group;
 
-  public NewContactData(String firstName, String lastName, String company, String address, String homeNumber, String mobileNumber, String email) {
+public class NewContactData {
+   private final String firstName;
+  private final String lastName;
+  //private final String company;
+  //private final String address;
+  //private final String homeNumber;
+  //private final String mobileNumber;
+  //private final String email;
+  private final String group;
+
+
+
+
+  public NewContactData(String firstName, String lastName, String group) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.company = company;
-    this.address = address;
-    this.homeNumber = homeNumber;
-    this.mobileNumber = mobileNumber;
-    this.email = email;
+    this.group = group;
+    // this.company = company;
+    //this.address = address;
+    //this.homeNumber = homeNumber;
+    // this.mobileNumber = mobileNumber;
+
+
   }
 
-  public String getFirstName() {
-    return firstName;
+  public String getGroup() {
+    return group;
   }
 
-  public String getLastName() {
-    return lastName;
+  public String getfirstName() {
+  return firstName;
   }
 
-  public String getCompany() {
+  public String getlastName() {
+  return lastName;
+  }
+}
+
+ /* public String getCompany() {
     return company;
   }
 
@@ -45,5 +58,5 @@ public class NewContactData {
 
   public String getEmail() {
     return email;
-  }
-}
+  }*/
+

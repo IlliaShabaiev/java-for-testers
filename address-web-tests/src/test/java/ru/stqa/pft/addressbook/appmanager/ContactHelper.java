@@ -3,11 +3,15 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.NewContactData;
+
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 
 public class ContactHelper extends HelperBase {
@@ -21,15 +25,25 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void fillOutColntactForm(NewContactData newContactData) {
-    type(By.name("firstname"), newContactData.getFirstName());
-    type(By.name("lastname"), newContactData.getLastName());
-    type(By.name("company"), newContactData.getCompany());
+  public void fillOutContactForm(NewContactData newContactData, boolean creation) {
+    type(By.name("firstname"), newContactData.getfirstName());
+    type(By.name("lastname"), newContactData.getlastName());
+
+
+    /*type(By.name("company"), newContactData.getCompany());
     type(By.name("address"), newContactData.getAddress());
     type(By.name("home"), newContactData.getHomeNumber());
     type(By.name("mobile"), newContactData.getMobileNumber());
-    type(By.name("email"), newContactData.getEmail());
-  }
+    type(By.name("email"), newContactData.getEmail());*/
+   // click(By.xpath("//*[@id='content']//*[@type='submit'][1]"));
+//    if (creation) {
+//      Select select = new Select(wd.findElement(By.name("new_group")));
+//      select.selectByVisibleText(newContactData.getGroup());
+//      //new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(NewContactData.getGroup());
+//    } else {
+//      Assert.assertFalse(isElementPresent(By.name("new_group")));
+//  }
+}
 
   public void submit() {
     click(By.name("submit"));
@@ -44,13 +58,13 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//*[@id='maintable']/tbody/tr[2]/td[1]"));
   }
 
-  public Map<String, String> getAdditionaltDetailsofContactBeingDeleted(){
+  /*public Map<String, String> getAdditionaltDetailsofContactBeingDeleted() {
     Map<String, String> additionalDetails = new HashMap<>();
     String detailsUrl = getValueOfAttributeByXpath("//*[@id='maintable']/tbody/tr[2]/td[7]/a", "href");
     String id = fetchIdFromUrl(detailsUrl);
     additionalDetails.put("id", id);
     return additionalDetails;
-  }
+  }*/
 
   public void eidtContact() {
     click(By.xpath("//*[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
@@ -63,8 +77,9 @@ public class ContactHelper extends HelperBase {
   public void initNewContactDeletion() {
     click(By.xpath("//*[@value='Delete']"));
   }
+
   public void waitForMessage() {
-    WebDriverWait wait = new WebDriverWait(wd, 30);
+    WebDriverWait wait = new WebDriverWait(wd, 15);
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='content']/div")));
 
   }
@@ -72,30 +87,31 @@ public class ContactHelper extends HelperBase {
   public void alertText() {
     wd.switchTo().alert().accept();
   }
-  public String fetchIdFromUrl(String url){
+
+/*  public String fetchIdFromUrl(String url) {
     String id;
-    if (url.contains("id")){
+    if (url.contains("id")) {
       id = url.substring(url.indexOf("?id=") + 4);
-    }else{
+    } else {
       throw new IllegalArgumentException("String: " + url + " doesn't contain 'id'");
     }
     return id;
-  }
+  } */
 
 
-  public String getMessageBoxContent(){
+/*  public String getMessageBoxContent() {
     String value = null;
-    try{
+    try {
       value = getValueOfAttributeByXpath("//*[@id=\"content\"]//*[@class=\"msgbox\"]");
-    }catch (Exception e){
+    } catch (Exception e) {
       System.out.println("Couldn't find Message Box");
       e.printStackTrace();
     }
     return value;
-  }
+  }*/
 
-  public void isMessageBoxPresent(){
-     click(By.xpath("//*[@id=\"content\"]//*[@class=\"msgbox\"]"));
+  public void isMessageBoxPresent() {
+    click(By.xpath("//*[@id=\"content\"]//*[@class=\"msgbox\"]"));
 
   }
 }

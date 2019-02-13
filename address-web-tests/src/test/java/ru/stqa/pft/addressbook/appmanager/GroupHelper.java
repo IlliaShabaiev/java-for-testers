@@ -8,16 +8,14 @@ import ru.stqa.pft.addressbook.model.GroupData;
 
 public class GroupHelper extends HelperBase {
 
+
   public GroupHelper(WebDriver wd, WebDriverWait wait) {
     super(wd, wait);
   }
 
+
   public void returnToGroupPage() {
     click(By.linkText("group page"));
-  }
-
-  public void submitGroupCreation() {
-    click(By.name("submit"));
   }
 
 
@@ -27,8 +25,12 @@ public class GroupHelper extends HelperBase {
     type(By.name("group_footer"), groupData.getFooter());
   }
 
+  public void submitGroupCreation() {
+    click(By.xpath("//*[@id='content']/form/input[2]"));
+  }
+
   public void initGroupCreation() {
-    click(By.name("new"));
+    click(By.xpath("//*[@id='nav']/ul/li[2]/a"));
   }
 
   public void deleteSelectedGroup() {
@@ -36,7 +38,7 @@ public class GroupHelper extends HelperBase {
   }
 
   public void selectGroup() {
-    click(By.name("selected[]"));
+    click(By.xpath("//*[@id='content']/form/span[16]/input"));
   }
 
   public void initGroupModification() {
@@ -45,6 +47,17 @@ public class GroupHelper extends HelperBase {
 
   public void submitGroupModification() {
     click(By.name("update"));
+  }
 
+  public void createGroup(GroupData group) {
+    initGroupCreation();
+    fillGroupForm(new GroupData("test 1", null, null, null));
+    submitGroupCreation();
+    returnToGroupPage();
+  }
+
+
+  public boolean isThereAGroup() {
+    return isElementPresent(By.xpath("//*[@type='checkbox']"));
   }
 }

@@ -42,7 +42,7 @@ public class ApplicationManager {
 
 
    wait = new WebDriverWait(wd,30);
-   wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+   wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
    wd.get("http://localhost/addressbook/");
    groupHelper = new GroupHelper(wd, wait);
    navigationHelper = new NavigationHelper(wd, wait);
@@ -50,7 +50,7 @@ public class ApplicationManager {
    contactHelper = new ContactHelper(wd, wait);
    dataHelper = new DataHelper();
 
-  sessionHelper.login("admin", "secret");
+sessionHelper.login("admin", "secret");
   }
 
   public void stop() {
