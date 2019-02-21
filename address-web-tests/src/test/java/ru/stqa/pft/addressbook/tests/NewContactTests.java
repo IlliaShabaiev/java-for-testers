@@ -31,7 +31,7 @@ public class NewContactTests extends TestBase {
       );*/
 
     app.getContactHelper().clickOnAddNewContactPage();
-    app.getContactHelper().fillOutContactForm(new NewContactData("Ilya", "Shabaev", "test1"), true);
+    app.getContactHelper().fillOutContactForm(new NewContactData("Ilya", "Shabaev", "test1", "34 brooklyn", "3424432", "33333333", "fdkf@gmail.com",null), true);
     app.getContactHelper().submit();
 
   }

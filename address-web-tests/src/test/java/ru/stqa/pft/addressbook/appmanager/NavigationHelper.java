@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -23,11 +24,10 @@ public class NavigationHelper extends HelperBase {
   }
 
 
-
   public void returnToHomePage() {
-      if (isElementPresent(By.id("maintable"))) {
-        return;
+    if (isElementPresent(By.id("maintable"))) {
+      return;
     }
-     click(By.linkText("home"));
-    }
+    click(By.linkText("home"));
   }
+}

@@ -30,7 +30,7 @@ public class GroupHelper extends HelperBase {
   }
 
   public void initGroupCreation() {
-    click(By.xpath("//*[@id='nav']/ul/li[2]/a"));
+    click(By.xpath("//*[@id='content']/form/input[1]"));
   }
 
   public void deleteSelectedGroup() {
@@ -38,7 +38,7 @@ public class GroupHelper extends HelperBase {
   }
 
   public void selectGroup() {
-    click(By.xpath("//*[@id='content']/form/span[16]/input"));
+    click(By.xpath("//*[@id='content']/form/span[1]/input"));
   }
 
   public void initGroupModification() {
@@ -58,6 +58,6 @@ public class GroupHelper extends HelperBase {
 
 
   public boolean isThereAGroup() {
-    return isElementPresent(By.xpath("//*[@type='checkbox']"));
+    return isElementPresent(By.xpath("//*[@id='content']/form/span/input"));
   }
 }
