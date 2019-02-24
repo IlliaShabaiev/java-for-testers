@@ -11,20 +11,15 @@ public class NewContactModificationTests extends TestBase {
   @Test
   public void NewContactModification() {
     Faker faker = new Faker();
-    int numberOfRecords = app.getContactHelper().getNumberOfContacts();
-    if (numberOfRecords == 0)  {
+
+    if (!app.getContactHelper().isThereAContact()){
       app.getContactHelper().clickOnAddNewContactPage();
       app.getContactHelper().fillOutContactForm(new NewContactData(faker.firstName(), faker.lastName(), faker.country(), "234 bever st", faker.phoneNumber(), faker.phoneNumber(), "123@mail.com", null), false);
       app.getContactHelper().submit();
       app.getContactHelper().returnToHomePage();
-      numberOfRecords = app.getContactHelper().getNumberOfContacts();
     }
-    if (numberOfRecords == 0) {
-      throw new IllegalArgumentException ("Couldn't create a new contact");
-    } else {
       app.getContactHelper().editContact();
       app.getContactHelper().fillOutContactForm(new NewContactData("Bob", "Ivanov", "google", "444 newbury", "12333443", "32344423", "iluas@gmail.com", null), false);
       app.getContactHelper().clickUpdate();
     }
   }
-}

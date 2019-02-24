@@ -126,8 +126,9 @@ public class ContactHelper extends HelperBase {
   }
 
   public boolean isThereAContact() {
-    return isElementPresent(By.xpath("//*[@type='checkbox']"));
+    return isElementPresent(By.name("selected[]"));
   }
+
 
   public int getNumberOfContacts(){
     WebElement element = findWebElement(By.xpath("//*[@id='search_count']"));
